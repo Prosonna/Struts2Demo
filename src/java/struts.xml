@@ -1,0 +1,33 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <!-- Configuration for the default package. -->
+    <package name="default" extends="struts-default">
+        <action name="LoginAction" class="Controller.LoginAction">
+            <result name="success">HomePage.jsp</result>
+            <result name="input"> index.jsp</result>
+        </action>
+       
+       <action name="RegistrationAction" class="Controller.RegistrationAction" method="execute">
+            <result name="input">Registration.jsp</result>
+            <result name="success">List.jsp</result>
+            <result name="report">report/report.pdf</result>
+            
+            <interceptor-ref name="fileUpload">
+                <param name="maximumSize">
+                    2097152
+                </param>
+                <param name="allowedTypes">
+                    image/png,image/gif,image/jpeg,image/pjpeg
+                </param>
+            </interceptor-ref>
+            <interceptor-ref name="defaultStack">
+                
+            </interceptor-ref>
+            
+        </action>
+       
+    </package>
+</struts>
